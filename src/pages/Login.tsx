@@ -36,11 +36,13 @@ export function Login() {
 
       <div className="glass-panel p-8 rounded-3xl w-full max-w-md relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/10 shadow-lg">
-            <LogIn className="w-8 h-8" />
+          <div className="w-20 h-20 bg-white rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
           </div>
           <h1 className="text-3xl font-bold tracking-tight mb-2">Welcome</h1>
-          <p className="opacity-70 text-sm">Sign in to SalesPro</p>
+          <p className="opacity-70 text-sm">Sign in to SalesTrack</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
