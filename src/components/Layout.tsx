@@ -39,12 +39,15 @@ export function Layout() {
   const isApiActive = settings.aiApiKey && settings.aiApiKey.startsWith('AIza');
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-[#050505] text-slate-900 dark:text-white transition-colors duration-300 overflow-hidden flex flex-col relative">
-      {/* Optimized Background Gradients */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-40 dark:opacity-30">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-blue-500/5 to-transparent" />
-        <div className="absolute top-[20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/30 via-purple-500/5 to-transparent" />
-        <div className="absolute bottom-[-20%] left-[20%] w-[80%] h-[80%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-500/30 via-slate-500/5 to-transparent" />
+    <div className="min-h-screen bg-[#0a0a0a] text-white transition-colors duration-300 overflow-hidden flex flex-col relative">
+      {/* Optimized Background Gradients - Dark Glassmorphism */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Top left bright light leak */}
+        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-white/5 to-transparent blur-3xl opacity-80" />
+        {/* Subtle green glow in center */}
+        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
+        {/* Subtle dark glow bottom right */}
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
       </div>
 
       {/* Dynamic Island */}

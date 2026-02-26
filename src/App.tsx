@@ -18,10 +18,10 @@ const Settings = lazy(() => import('./pages/Settings').then(m => ({ default: m.S
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
 
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center text-white">
+  <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center text-white">
     <div className="w-16 h-16 relative mb-4">
-      <div className="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
-      <div className="absolute inset-0 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+      <div className="absolute inset-0 border-4 border-emerald-500/20 rounded-full"></div>
+      <div className="absolute inset-0 border-4 border-emerald-500 rounded-full border-t-transparent animate-spin"></div>
     </div>
     <div className="text-sm font-medium tracking-widest uppercase opacity-50 animate-pulse">Loading</div>
   </div>

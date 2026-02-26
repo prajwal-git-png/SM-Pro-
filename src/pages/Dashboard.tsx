@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useStore } from '../store/useStore';
-import { Share2, Calendar as CalendarIcon, Edit2, Trash2, Image as ImageIcon, Download, Eye, X } from 'lucide-react';
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, parseISO } from 'date-fns';
+import { Share2, Calendar as CalendarIcon, Edit2, Trash2, Image as ImageIcon, Download, Eye, X, TrendingUp } from 'lucide-react';
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, parseISO, subDays } from 'date-fns';
 import { AddSaleModal } from '../components/AddSaleModal';
 import { Sale } from '../db';
 import toast from 'react-hot-toast';
+import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
 
 export function Dashboard() {
   const { settings, sales, loadSales, deleteSale } = useStore();
@@ -43,6 +44,25 @@ export function Dashboard() {
   const todaysSales = useMemo(() => sales.filter(s => s.date === selectedDateStr), [sales, selectedDateStr]);
   const todayValue = useMemo(() => todaysSales.reduce((sum, s) => sum + (s.price * s.quantity), 0), [todaysSales]);
   const todayQty = useMemo(() => todaysSales.reduce((sum, s) => sum + s.quantity, 0), [todaysSales]);
+
+  // Calculate Last 7 Days for Graph
+  const weeklyData = useMemo(() => {
+    return Array.from({ length: 7 }, (_, i) => {
+      const d = subDays(new Date(), 6 - i);
+      const dateStr = format(d, 'yyyy-MM-dd');
+      const daySales = sales.filter(s => s.date === dateStr);
+      const value = daySales.reduce((sum, s) => sum + (s.price * s.quantity), 0);
+      return { name: format(d, 'EEE'), value, date: dateStr };
+    });
+  }, [sales]);
+
+  const CustomDot = (props: any) => {
+    const { cx, cy, index, dataLength } = props;
+    if (index === dataLength - 1) {
+      return <circle cx={cx} cy={cy} r={6} fill="white" stroke="none" className="drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />;
+    }
+    return null;
+  };
 
   const handleEdit = (sale: Sale) => {
     setSaleToEdit(sale);
@@ -148,17 +168,58 @@ I checked out sir ,,,,,`;
             <p className="text-sm font-bold">₹{(settings?.brandTarget || 500000).toLocaleString()}</p>
           </div>
         </div>
-        <div className="w-full bg-black/10 dark:bg-white/10 rounded-full h-3 overflow-hidden">
+        <div className="w-full bg-white/5 rounded-full h-3 overflow-hidden border border-white/10">
           <div 
             className={`h-full rounded-full transition-all duration-1000 ${
               (mtdValue / (settings?.brandTarget || 500000)) >= 1 
                 ? 'bg-gradient-to-r from-emerald-400 to-emerald-600' 
                 : (mtdValue / (settings?.brandTarget || 500000)) >= 0.5
-                ? 'bg-gradient-to-r from-blue-400 to-indigo-600'
+                ? 'bg-gradient-to-r from-purple-400 to-indigo-600'
                 : 'bg-gradient-to-r from-orange-400 to-rose-600'
             }`}
             style={{ width: `${Math.min((mtdValue / (settings?.brandTarget || 500000)) * 100, 100)}%` }}
           />
+        </div>
+      </div>
+
+      {/* Weekly Performance Graph */}
+      <div className="glass-panel p-5 rounded-3xl space-y-4">
+        <div className="flex justify-between items-center mb-2">
+          <h2 className="font-semibold flex items-center gap-2">
+            <TrendingUp className="w-5 h-5" /> Weekly Performance
+          </h2>
+        </div>
+        <div className="h-48 w-full -ml-2">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart data={weeklyData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#a855f7" stopOpacity={0.6}/>
+                  <stop offset="95%" stopColor="#a855f7" stopOpacity={0}/>
+                </linearGradient>
+                <linearGradient id="strokeGradient" x1="0" y1="0" x2="1" y2="0">
+                   <stop offset="0%" stopColor="#fbcfe8" />
+                   <stop offset="100%" stopColor="#c084fc" />
+                </linearGradient>
+              </defs>
+              <Tooltip 
+                contentStyle={{ backgroundColor: 'rgba(0,0,0,0.8)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                itemStyle={{ color: '#fff' }}
+                labelStyle={{ color: 'rgba(255,255,255,0.6)' }}
+                formatter={(value: number) => [`₹${value.toLocaleString()}`, 'Sales']}
+              />
+              <Area
+                type="monotone"
+                dataKey="value"
+                stroke="url(#strokeGradient)"
+                strokeWidth={4}
+                fillOpacity={1}
+                fill="url(#colorValue)"
+                activeDot={<CustomDot dataLength={weeklyData.length} />}
+                dot={<CustomDot dataLength={weeklyData.length} />}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
         </div>
       </div>
 

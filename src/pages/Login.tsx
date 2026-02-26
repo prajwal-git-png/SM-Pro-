@@ -26,16 +26,17 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-[#050505] text-slate-900 dark:text-white flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Optimized Background Gradients */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/30 via-blue-500/5 to-transparent" />
-        <div className="absolute top-[20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/30 via-purple-500/5 to-transparent" />
+    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Optimized Background Gradients - Dark Glassmorphism */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-white/5 to-transparent blur-3xl opacity-80" />
+        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
       </div>
 
       <div className="glass-panel p-8 rounded-3xl w-full max-w-md relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 border border-white/10 shadow-lg">
             <LogIn className="w-8 h-8" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight mb-2">Welcome</h1>

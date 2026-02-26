@@ -10,15 +10,15 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/40 dark:border-white/20 dark:border-t-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+    @apply bg-black/40 backdrop-blur-[24px] border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.5)];
   }
   
   .glass-input {
-    @apply bg-white/50 dark:bg-black/40 backdrop-blur-md border border-white/40 dark:border-white/20 dark:border-t-white/30 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-500/50 transition-all;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 transition-all text-white placeholder-white/30;
   }
 
   .glass-button {
-    @apply bg-slate-900 hover:bg-black dark:bg-white/10 dark:hover:bg-white/20 text-white backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.3)] border border-transparent dark:border-white/10 dark:border-t-white/20 rounded-xl px-4 py-3 font-medium transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
+    @apply bg-white/5 hover:bg-white/10 text-white backdrop-blur-md shadow-[0_4px_12px_rgba(0,0,0,0.2)] border border-white/10 rounded-xl px-4 py-3 font-medium transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100 flex items-center justify-center gap-2;
   }
 
   .pb-safe {
