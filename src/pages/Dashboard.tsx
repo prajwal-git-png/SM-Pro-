@@ -229,7 +229,18 @@ I checked out sir ,,,,,`;
           <h2 className="font-semibold flex items-center gap-2">
             <CalendarIcon className="w-5 h-5" /> Calendar Heatmap
           </h2>
-          <span className="text-sm font-medium">{format(currentMonth, 'MMMM yyyy')}</span>
+          <div className="flex items-center gap-2">
+            <input 
+              type="month" 
+              value={format(currentMonth, 'yyyy-MM')}
+              onChange={(e) => {
+                if (e.target.value) {
+                  setCurrentMonth(new Date(e.target.value));
+                }
+              }}
+              className="bg-transparent border border-slate-200 dark:border-white/10 rounded-lg px-2 py-1 text-sm font-medium focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            />
+          </div>
         </div>
         
         <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium opacity-50 mb-2">
