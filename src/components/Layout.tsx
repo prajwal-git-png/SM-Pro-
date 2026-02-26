@@ -48,6 +48,11 @@ export function Layout() {
         <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
         {/* Subtle dark glow bottom right */}
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
+        
+        {/* 3D Floating Spheres */}
+        <div className="sphere sphere-dark w-48 h-48 top-[15%] right-[-10%] animate-float-slow opacity-90" />
+        <div className="sphere sphere-emerald w-64 h-64 top-[45%] left-[-15%] animate-float-slower opacity-80" />
+        <div className="sphere sphere-purple w-40 h-40 bottom-[10%] right-[10%] animate-float-slow opacity-70" style={{ animationDelay: '-5s' }} />
       </div>
 
       {/* Dynamic Island */}

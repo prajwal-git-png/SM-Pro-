@@ -28,6 +28,40 @@
   .pt-safe-top {
     padding-top: env(safe-area-inset-top, 10px);
   }
+
+  /* 3D Floating Spheres */
+  .sphere {
+    @apply absolute rounded-full;
+    box-shadow: inset -20px -20px 40px rgba(0,0,0,0.8), inset 10px 10px 20px rgba(255,255,255,0.2), 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .sphere-emerald {
+    background: radial-gradient(circle at 30% 30%, #059669, #022c22);
+  }
+  .sphere-purple {
+    background: radial-gradient(circle at 30% 30%, #7c3aed, #2e1065);
+  }
+  .sphere-blue {
+    background: radial-gradient(circle at 30% 30%, #2563eb, #172554);
+  }
+  .sphere-dark {
+    background: radial-gradient(circle at 30% 30%, #4b5563, #030712);
+  }
+  
+  .animate-float-slow {
+    animation: float 12s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: float-reverse 15s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-30px) translateX(10px); }
+}
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(30px) translateX(-10px); }
 }
 
 /* Shine Animation */

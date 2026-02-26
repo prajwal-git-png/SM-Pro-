@@ -32,6 +32,10 @@ export function Login() {
         <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-white/5 to-transparent blur-3xl opacity-80" />
         <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
+        
+        {/* 3D Floating Spheres */}
+        <div className="sphere sphere-dark w-56 h-56 top-[10%] right-[-10%] animate-float-slow opacity-90" />
+        <div className="sphere sphere-emerald w-48 h-48 bottom-[20%] left-[-10%] animate-float-slower opacity-80" />
       </div>
 
       <div className="glass-panel p-8 rounded-3xl w-full max-w-md relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
