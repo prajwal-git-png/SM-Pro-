@@ -51,7 +51,13 @@ export function Layout() {
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-safe-top mt-2 pointer-events-none">
         <motion.div
           layout
-          className="pointer-events-auto bg-black text-white rounded-full px-4 py-2 flex items-center gap-2 shadow-2xl border border-white/10 overflow-hidden"
+          className={`pointer-events-auto bg-black text-white rounded-full flex items-center gap-2 shadow-2xl border border-white/10 overflow-hidden ${
+            isIslandExpanded 
+              ? 'p-0' 
+              : settings.profilePhoto 
+                ? 'pr-4 pl-0.5 py-0.5' 
+                : 'px-4 py-2'
+          }`}
           animate={{
             width: isIslandExpanded ? 320 : 'auto',
             height: isIslandExpanded ? 140 : 40,
@@ -69,11 +75,10 @@ export function Layout() {
                 className="flex items-center gap-2 whitespace-nowrap cursor-pointer"
                 onClick={() => setIsIslandExpanded(true)}
               >
-                {settings.profilePhoto ? (
-                  <img src={settings.profilePhoto} alt="Profile" className="w-6 h-6 rounded-full object-cover border border-white/20" />
-                ) : (
-                  <div className={`w-2 h-2 rounded-full animate-pulse ${isApiActive ? 'bg-emerald-500' : 'bg-red-500'}`} />
+                {settings.profilePhoto && (
+                  <img src={settings.profilePhoto} alt="Profile" className="w-9 h-9 rounded-full object-cover border border-white/20" />
                 )}
+                <div className={`w-2 h-2 rounded-full animate-pulse ${isApiActive ? 'bg-emerald-500' : 'bg-red-500'}`} />
                 <span className="font-medium text-sm shine-text">{settings.userName}</span>
               </motion.div>
             ) : (
@@ -82,12 +87,12 @@ export function Layout() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="w-full h-full flex flex-col justify-between p-2 relative"
+                className="w-full h-full flex flex-col justify-between p-4 relative"
               >
                 <div className="flex justify-between items-center cursor-pointer" onClick={() => setIsIslandExpanded(false)}>
                   <div className="flex items-center gap-2">
                     {settings.profilePhoto && (
-                      <img src={settings.profilePhoto} alt="Profile" className="w-8 h-8 rounded-full object-cover border border-white/20" />
+                      <img src={settings.profilePhoto} alt="Profile" className="w-10 h-10 rounded-full object-cover border border-white/20" />
                     )}
                     <span className="font-semibold">{settings.userName}</span>
                   </div>
