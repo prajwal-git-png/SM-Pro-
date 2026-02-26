@@ -1,0 +1,25 @@
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export const PRODUCTS = [
+  "BAJAJ MIXER GRINDER GX15 500W", "BAJAJ MIXER 500W 3JARS GRACIO LILAC", "BAJAJ MIXER 750W 3JARS CARVE PURPLE", 
+  "BAJAJ MIXER 750W 4JARS VIRTUE BLACK", "BAJAJ MG 1000W 4J EVOQUE JET BLK", "BAJAJ FOOD PROCESSOR FX 1000 DLX 1000W", 
+  "BAJAJ INSTANT GEYSER MAJESTY 3KW 3L", "BAJAJ INSTANT GEYSER AERONO 3L 3KW", "BAJAJ STORAGE GEYSER PENTACLE 10L", 
+  "BAJAJ STORAGE GEYSER PENTACLE 15L", "BAJAJ STORAGE GEYSER PENTACLE 25L", "BAJAJ WATER HEATER NEWSHAKTI 0742 15L", 
+  "BAJAJ WATER HEATER NEWSHAKTI 0743 25L", "BAJAJ COOKTOP CGX 2 ECO", "BAJAJ COOKTOP MAJESTY CGX3 ECO GLASS", 
+  "BAJAJ COOKTOP CGX4 ECO GLASS 4 BURNER", "Bajaj UCX 2B- 2 Burner", "BAJAJ COOKTOP 2BR GP6 2B BLACK", 
+  "Bajaj Shield Series Glanza 30", "Bajaj Shield Series Glanza 42", "Bajaj TMH50", "Bajaj Shield Series Elevate 65", 
+  "Bajaj Shield Series Elevate 90", "Bajaj Shield Series Mighty 95", "BAJAJ POP UP TSTR ATX 4", 
+  "BAJAJ POP UP TOASTER ATX 3 SS BK", "BAJAJ SANDWICH MAKER GRILL SWX4 DLX 800W", "BAJAJ SANDWICH MAKR SWX6 GRILL", 
+  "BAJAJ HAND BLENDER HB 21 BK 300W", "BAJAJ HAND BLENDER HB 22 BL 300W", "Bajaj Hand Blender Juvel 300W", 
+  "Bajaj Flashy New", "RX10", "RX11", "BAJAJ INDUCTION COOKTOP 1400W ICX 140TS", "BAJAJ INDUCTION CT MAJESTY SLIM BK 2100W", 
+  "BAJAJ DRY IRON DX 11", "BAJAJ MAJESTY DX4", "Bajaj Steam Iron MX 3 Neo 1250W", "BAJAJ STEAM IRON MX 35N", 
+  "MR Tresta 500W Mixer Grinder", "MR TetraGrind 750W 3 Jar Mixer Grinder", "MR GrindPro Maxx 1000W MG", 
+  "Icon Superb Food Processor", "Pronto Plus", "640099 MR HB-PRONTO ULTRA", "AT 205", "5L Digital Air Fryer BL", 
+  "MR OTG 29 RCAD DIGI", "20R", "OTG 60 RCSS", "Microwave Oven - 20MS", "Inspira dry iron", 
+  "Ultra Glide Steam Iron - 1600W", "Super Glide Steam Iron - 2000W"
+];

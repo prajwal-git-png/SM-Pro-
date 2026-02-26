@@ -1,0 +1,8 @@
+{
+  "name": "Remix: SalesPro",
+  "description": "A modern, offline-capable Progressive Web Application for Sales Professionals. Features include Dashboard, Attendance, Targets, CRM, and Settings.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
