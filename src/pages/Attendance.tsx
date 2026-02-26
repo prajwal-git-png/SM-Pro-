@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useStore } from '../store/useStore';
 import { Calendar as CalendarIcon, MapPin, Clock, Share2, AlertTriangle } from 'lucide-react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay } from 'date-fns';
@@ -30,12 +30,18 @@ export function Attendance() {
     loadAttendance();
   }, [loadAttendance]);
 
-  const monthStart = startOfMonth(currentMonth);
-  const monthEnd = endOfMonth(currentMonth);
-  const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
+  const { monthStart, monthEnd, daysInMonth } = useMemo(() => {
+    const start = startOfMonth(currentMonth);
+    const end = endOfMonth(currentMonth);
+    return {
+      monthStart: start,
+      monthEnd: end,
+      daysInMonth: eachDayOfInterval({ start, end })
+    };
+  }, [currentMonth]);
 
-  const selectedDateStr = format(selectedDate, 'yyyy-MM-dd');
-  const todaysAttendance = attendance.find(a => a.date === selectedDateStr);
+  const selectedDateStr = useMemo(() => format(selectedDate, 'yyyy-MM-dd'), [selectedDate]);
+  const todaysAttendance = useMemo(() => attendance.find(a => a.date === selectedDateStr), [attendance, selectedDateStr]);
 
   const handleMarkAttendance = async (status: 'Present' | 'Week Off' | 'Leave') => {
     if (status === 'Present') {

@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { X, Camera, Upload, Search, FileText } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { PRODUCTS, cn } from '../utils';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
 import { Sale } from '../db';
-import { createWorker } from 'tesseract.js';
 
 interface AddSaleModalProps {
   isOpen: boolean;
@@ -69,7 +68,9 @@ export function AddSaleModal({ isOpen, onClose, saleToEdit }: AddSaleModalProps)
     }
   }, [isOpen, saleToEdit]);
 
-  const filteredProducts = PRODUCTS.filter(p => p.toLowerCase().includes(productSearch.toLowerCase()));
+  const filteredProducts = useMemo(() => 
+    PRODUCTS.filter(p => p.toLowerCase().includes(productSearch.toLowerCase())),
+  [productSearch]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -119,6 +120,7 @@ export function AddSaleModal({ isOpen, onClose, saleToEdit }: AddSaleModalProps)
     toast.loading('Extracting text...', { id: 'extract' });
 
     try {
+      const { createWorker } = await import('tesseract.js');
       const worker = await createWorker('eng');
       const ret = await worker.recognize(file);
       const text = ret.data.text.toLowerCase();

@@ -18,9 +18,15 @@ export function Dashboard() {
     loadSales();
   }, [loadSales]);
 
-  const monthStart = startOfMonth(currentMonth);
-  const monthEnd = endOfMonth(currentMonth);
-  const daysInMonth = eachDayOfInterval({ start: monthStart, end: monthEnd });
+  const { monthStart, monthEnd, daysInMonth } = useMemo(() => {
+    const start = startOfMonth(currentMonth);
+    const end = endOfMonth(currentMonth);
+    return {
+      monthStart: start,
+      monthEnd: end,
+      daysInMonth: eachDayOfInterval({ start, end })
+    };
+  }, [currentMonth]);
 
   // Calculate MTD Sales
   const mtdSales = useMemo(() => {
@@ -30,13 +36,13 @@ export function Dashboard() {
     });
   }, [sales, monthStart, monthEnd]);
 
-  const mtdValue = mtdSales.reduce((sum, s) => sum + (s.price * s.quantity), 0);
+  const mtdValue = useMemo(() => mtdSales.reduce((sum, s) => sum + (s.price * s.quantity), 0), [mtdSales]);
 
   // Calculate Selected Date Sales
-  const selectedDateStr = format(selectedDate, 'yyyy-MM-dd');
-  const todaysSales = sales.filter(s => s.date === selectedDateStr);
-  const todayValue = todaysSales.reduce((sum, s) => sum + (s.price * s.quantity), 0);
-  const todayQty = todaysSales.reduce((sum, s) => sum + s.quantity, 0);
+  const selectedDateStr = useMemo(() => format(selectedDate, 'yyyy-MM-dd'), [selectedDate]);
+  const todaysSales = useMemo(() => sales.filter(s => s.date === selectedDateStr), [sales, selectedDateStr]);
+  const todayValue = useMemo(() => todaysSales.reduce((sum, s) => sum + (s.price * s.quantity), 0), [todaysSales]);
+  const todayQty = useMemo(() => todaysSales.reduce((sum, s) => sum + s.quantity, 0), [todaysSales]);
 
   const handleEdit = (sale: Sale) => {
     setSaleToEdit(sale);

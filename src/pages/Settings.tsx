@@ -4,7 +4,6 @@ import { Moon, Sun, Save, Download, Upload, FileText, LogOut, Camera, MapPin } f
 import toast from 'react-hot-toast';
 import { dbPromise } from '../db';
 import { format } from 'date-fns';
-import { jsPDF } from 'jspdf';
 
 export function Settings() {
   const { settings, updateSettings } = useStore();
@@ -203,6 +202,7 @@ export function Settings() {
       
       const filteredSales = allSales.filter(s => s.date >= reportStartDate && s.date <= reportEndDate);
       
+      const { jsPDF } = await import('jspdf');
       const doc = new jsPDF();
       doc.setFontSize(20);
       doc.text('Monthly Sales Report', 14, 22);

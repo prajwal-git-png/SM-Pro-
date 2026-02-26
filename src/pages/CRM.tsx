@@ -3,7 +3,6 @@ import { useStore } from '../store/useStore';
 import { HeadphonesIcon, PhoneCall, Globe, Send, Sparkles, User, CheckCircle, Clock } from 'lucide-react';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
-import { GoogleGenAI } from '@google/genai';
 import Markdown from 'react-markdown';
 
 export function CRM() {
@@ -89,6 +88,7 @@ export function CRM() {
     setIsAiTyping(true);
 
     try {
+      const { GoogleGenAI } = await import('@google/genai');
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',

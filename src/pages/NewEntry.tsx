@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Camera, Upload, Search, FileText, X, History, Eye, Download } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { PRODUCTS } from '../utils';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
-import { createWorker } from 'tesseract.js';
 import { useNavigate } from 'react-router-dom';
 import { Sale } from '../db';
 
@@ -54,7 +53,9 @@ export function NewEntry() {
   const [billImage, setBillImage] = useState<Blob | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const filteredProducts = PRODUCTS.filter(p => p.toLowerCase().includes(productSearch.toLowerCase()));
+  const filteredProducts = useMemo(() => 
+    PRODUCTS.filter(p => p.toLowerCase().includes(productSearch.toLowerCase())),
+  [productSearch]);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -99,6 +100,7 @@ export function NewEntry() {
     toast.loading('Extracting text...', { id: 'extract' });
 
     try {
+      const { createWorker } = await import('tesseract.js');
       const worker = await createWorker('eng');
       const ret = await worker.recognize(file);
       const text = ret.data.text.toLowerCase();

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, X, Sparkles, User } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { GoogleGenAI } from '@google/genai';
 import Markdown from 'react-markdown';
 import toast from 'react-hot-toast';
 
@@ -43,6 +42,7 @@ export function FloatingChat({ isOpen, onClose }: FloatingChatProps) {
     setIsAiTyping(true);
 
     try {
+      const { GoogleGenAI } = await import('@google/genai');
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
