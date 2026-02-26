@@ -263,7 +263,7 @@ export function Settings() {
         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
         <button
           onClick={toggleTheme}
-          className="p-3 rounded-full glass-panel hover:bg-white/20 transition-colors"
+          className="p-3 rounded-full glass-panel hover:bg-slate-900/10 dark:hover:bg-white/20 transition-colors"
         >
           {formData.theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
         </button>

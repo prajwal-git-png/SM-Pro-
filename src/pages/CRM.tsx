@@ -122,7 +122,7 @@ export function CRM() {
       <div className="grid grid-cols-2 gap-4 shrink-0">
         <a 
           href={settings?.tollFree ? `tel:${settings.tollFree}` : '#'}
-          className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/20 transition-colors"
+          className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-900/10 dark:hover:bg-white/20 transition-colors"
           onClick={(e) => !settings?.tollFree && e.preventDefault()}
         >
           <div className="p-3 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
@@ -134,7 +134,7 @@ export function CRM() {
           href={settings?.brandWebsite || '#'}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/20 transition-colors"
+          className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-900/10 dark:hover:bg-white/20 transition-colors"
           onClick={(e) => !settings?.brandWebsite && e.preventDefault()}
         >
           <div className="p-3 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400">

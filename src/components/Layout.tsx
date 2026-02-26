@@ -39,27 +39,29 @@ export function Layout() {
   const isApiActive = settings.aiApiKey && settings.aiApiKey.startsWith('AIza');
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white transition-colors duration-300 overflow-hidden flex flex-col relative">
-      {/* Optimized Background Gradients - Dark Glassmorphism */}
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] text-slate-900 dark:text-white transition-colors duration-300 overflow-hidden flex flex-col relative">
+      {/* Optimized Background Gradients - Glassmorphism */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Top left bright light leak */}
-        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-white/5 to-transparent blur-3xl opacity-80" />
+        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-300/50 dark:from-white/10 via-slate-300/20 dark:via-white/5 to-transparent blur-3xl opacity-80" />
         {/* Subtle green glow in center */}
-        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
+        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
         {/* Subtle dark glow bottom right */}
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-400/20 dark:from-white/5 via-transparent to-transparent blur-3xl" />
         
-        {/* 3D Floating Spheres */}
-        <div className="sphere sphere-dark w-48 h-48 top-[15%] right-[-10%] animate-float-slow opacity-90" />
-        <div className="sphere sphere-emerald w-64 h-64 top-[45%] left-[-15%] animate-float-slower opacity-80" />
-        <div className="sphere sphere-purple w-40 h-40 bottom-[10%] right-[10%] animate-float-slow opacity-70" style={{ animationDelay: '-5s' }} />
+        {/* 3D Floating Spheres - Water Bubble Style */}
+        <div className="sphere-bubble w-64 h-64 top-[10%] right-[-5%] animate-float-slow" />
+        <div className="sphere-bubble w-32 h-32 top-[30%] left-[-5%] animate-float-slower" style={{ animationDelay: '-2s' }} />
+        <div className="sphere-bubble w-16 h-16 top-[45%] left-[10%] animate-float-slow" style={{ animationDelay: '-5s' }} />
+        <div className="sphere-bubble w-48 h-48 bottom-[10%] left-[20%] animate-float-slower" style={{ animationDelay: '-7s' }} />
+        <div className="sphere-bubble w-24 h-24 bottom-[25%] right-[10%] animate-float-slow" style={{ animationDelay: '-3s' }} />
       </div>
 
       {/* Dynamic Island */}
       <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-safe-top mt-2 pointer-events-none">
         <motion.div
           layout
-          className={`pointer-events-auto bg-black text-white rounded-full flex items-center gap-2 shadow-2xl border border-white/10 overflow-hidden ${
+          className={`pointer-events-auto bg-white dark:bg-black text-slate-900 dark:text-white rounded-full flex items-center gap-2 shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden ${
             isIslandExpanded 
               ? 'p-0' 
               : settings.profilePhoto 
@@ -106,18 +108,18 @@ export function Layout() {
                   </div>
                   <div className={`w-2 h-2 rounded-full ${isApiActive ? 'bg-emerald-500' : 'bg-red-500'}`} />
                 </div>
-                <div className="text-xs text-white/80 italic text-center px-2 py-1 cursor-pointer" onClick={() => setIsIslandExpanded(false)}>
+                <div className="text-xs text-slate-600 dark:text-white/80 italic text-center px-2 py-1 cursor-pointer" onClick={() => setIsIslandExpanded(false)}>
                   "{currentQuote}"
                 </div>
                 <div className="flex justify-between items-end">
-                  <span className="text-xs text-slate-400">{settings.storeLocation}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">{settings.storeLocation}</span>
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
                       setIsChatOpen(true);
                       setIsIslandExpanded(false);
                     }}
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-emerald-400"
+                    className="p-2 rounded-full bg-slate-900/10 dark:bg-white/10 hover:bg-slate-900/20 dark:hover:bg-white/20 transition-colors text-emerald-600 dark:text-emerald-400"
                   >
                     <MessageCircle className="w-4 h-4" />
                   </button>

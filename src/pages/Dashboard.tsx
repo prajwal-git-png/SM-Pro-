@@ -168,7 +168,7 @@ I checked out sir ,,,,,`;
             <p className="text-sm font-bold">₹{(settings?.brandTarget || 500000).toLocaleString()}</p>
           </div>
         </div>
-        <div className="w-full bg-white/5 rounded-full h-3 overflow-hidden border border-white/10">
+        <div className="w-full bg-slate-900/10 dark:bg-white/5 rounded-full h-3 overflow-hidden border border-slate-900/10 dark:border-white/10">
           <div 
             className={`h-full rounded-full transition-all duration-1000 ${
               (mtdValue / (settings?.brandTarget || 500000)) >= 1 

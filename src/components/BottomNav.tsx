@@ -15,7 +15,7 @@ const navItems = [
 export function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 pb-safe">
-      <div className="glass-panel mx-4 mb-4 rounded-2xl flex justify-between items-center px-2 py-2 bg-black/60">
+      <div className="glass-panel mx-4 mb-4 rounded-2xl flex justify-between items-center px-2 py-2 bg-white/60 dark:bg-black/60">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
@@ -24,8 +24,8 @@ export function BottomNav() {
               cn(
                 'flex flex-col items-center justify-center w-14 h-14 rounded-xl transition-all duration-300',
                 isActive
-                  ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/5'
-                  : 'text-white/50 hover:text-white/90 hover:bg-white/5'
+                  ? 'bg-slate-900/10 dark:bg-white/10 text-slate-900 dark:text-white shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-slate-900/5 dark:border-white/5'
+                  : 'text-slate-500 hover:text-slate-900 dark:text-white/50 dark:hover:text-white/90 hover:bg-slate-900/5 dark:hover:bg-white/5'
               )
             }
           >

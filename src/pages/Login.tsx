@@ -26,22 +26,24 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Optimized Background Gradients - Dark Glassmorphism */}
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] text-slate-900 dark:text-white flex items-center justify-center p-4 relative overflow-hidden transition-colors duration-300">
+      {/* Optimized Background Gradients - Glassmorphism */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-white/5 to-transparent blur-3xl opacity-80" />
-        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent blur-3xl" />
+        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-300/50 dark:from-white/10 via-slate-300/20 dark:via-white/5 to-transparent blur-3xl opacity-80" />
+        <div className="absolute top-[30%] left-[20%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 dark:from-emerald-500/5 via-emerald-500/0 to-transparent blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-400/20 dark:from-white/5 via-transparent to-transparent blur-3xl" />
         
-        {/* 3D Floating Spheres */}
-        <div className="sphere sphere-dark w-56 h-56 top-[10%] right-[-10%] animate-float-slow opacity-90" />
-        <div className="sphere sphere-emerald w-48 h-48 bottom-[20%] left-[-10%] animate-float-slower opacity-80" />
+        {/* 3D Floating Spheres - Water Bubble Style */}
+        <div className="sphere-bubble w-72 h-72 top-[-5%] right-[-10%] animate-float-slow" />
+        <div className="sphere-bubble w-40 h-40 bottom-[15%] left-[-5%] animate-float-slower" style={{ animationDelay: '-3s' }} />
+        <div className="sphere-bubble w-20 h-20 top-[40%] left-[10%] animate-float-slow" style={{ animationDelay: '-6s' }} />
+        <div className="sphere-bubble w-12 h-12 bottom-[30%] right-[20%] animate-float-slower" style={{ animationDelay: '-1s' }} />
       </div>
 
       <div className="glass-panel p-8 rounded-3xl w-full max-w-md relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-white rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <div className="w-20 h-20 bg-slate-900 dark:bg-white rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-lg">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="stroke-white dark:stroke-black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 15l-6-6-6 6"/>
             </svg>
           </div>

@@ -18,10 +18,10 @@ const Settings = lazy(() => import('./pages/Settings').then(m => ({ default: m.S
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
 
 const LoadingFallback = () => (
-  <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center text-white relative">
+  <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] flex flex-col items-center justify-center text-slate-900 dark:text-white relative transition-colors duration-300">
     <div className="flex flex-col items-center justify-center flex-1 w-full">
-      <div className="w-32 h-32 bg-white rounded-[2.5rem] flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <div className="w-32 h-32 bg-slate-900 dark:bg-white rounded-[2.5rem] flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" className="stroke-white dark:stroke-black" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <path d="M18 15l-6-6-6 6"/>
         </svg>
       </div>
